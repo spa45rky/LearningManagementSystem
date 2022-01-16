@@ -1,20 +1,22 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "db.js",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.17.2",
-    "mongodb": "^4.3.0",
-    "nodemon": "^2.0.15"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon db.js"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "LMS",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^12.0.3",
+        "express": "^4.17.2",
+        "mongoose": "^6.1.6"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }
