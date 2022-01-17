@@ -15,6 +15,7 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 app.use("/admin", adminRoute);
 app.use("/head", headRoute);
@@ -30,7 +31,7 @@ app.use("*", (req, res, next) => {
 mongoose.connect(process.env.CONNECTIONSTRING)
 .then(() => {
     console.log("Database Connected");
-    app.listen(3000, () => {
+    app.listen(process.env.PORT, () => {
         console.log("Server Started! 💚");
     });
 })

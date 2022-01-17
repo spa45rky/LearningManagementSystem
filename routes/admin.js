@@ -28,7 +28,7 @@ router.post("/addteacher", async (req, res, next) => {
 });
 
 //Add Student (Working)
-router.post("/addstudent", (req, res, next) => {
+router.post("/addstudent", async (req, res, next) => {
     try{
         console.log(res.body)
         const {name, age, gender, email} = req.body;
@@ -38,7 +38,7 @@ router.post("/addstudent", (req, res, next) => {
             CGPA: 0.0,
             student_result:[]
         });
-        student.save();
+        await student.save();
 
         console.log("Student Added");
         res.json({
