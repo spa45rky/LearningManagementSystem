@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv")
+const cors = require("cors")
 
 //Routes Import
 const adminRoute = require('./routes/admin');
@@ -14,7 +15,7 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-
+app.use(cors())
 app.use("/admin", adminRoute);
 app.use("/head", headRoute);
 app.use("/teacher", teacherRoute);
@@ -26,7 +27,7 @@ app.use("*", (req, res, next) => {
     })
 })
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.CONNECTIONSTRING)
 .then(() => {
     console.log("Database Connected");
     app.listen(3000, () => {

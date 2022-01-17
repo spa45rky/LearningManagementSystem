@@ -28,8 +28,9 @@ router.post("/addteacher", async (req, res, next) => {
 });
 
 //Add Student (Working)
-router.post("/addstudent", async (req, res, next) => {
+router.post("/addstudent", (req, res, next) => {
     try{
+        console.log(res.body)
         const {name, age, gender, email} = req.body;
 
         const student = new Student({
@@ -37,7 +38,7 @@ router.post("/addstudent", async (req, res, next) => {
             CGPA: 0.0,
             student_result:[]
         });
-        await student.save();
+        student.save();
 
         console.log("Student Added");
         res.json({
@@ -287,6 +288,17 @@ router.delete("/student/:id", async (req, res, next) => {
         res.send(err)
     }
 });
+
+//View Students
+router.get("/student/", async (req, res, next) => {
+    try{
+        const arr = await Student.find();
+        console.log(arr)
+        res.send(arr)
+    } catch(err) {
+        res.send(err)
+    }
+})
 
 //Show Dashboard
 router.get("/", async (req, res, next) => {
